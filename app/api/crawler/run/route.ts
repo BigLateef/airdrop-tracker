@@ -6,6 +6,7 @@ import { computeSybilScore } from "@/lib/sybil";
 import { sendDailyDiscordUpdate, type DailyUpdateRow } from "@/lib/discord";
 
 export const maxDuration = 60;
+export const dynamic = "force-dynamic";
 
 function isAuthorized(req: NextRequest): boolean {
   const secret = process.env.CRON_SECRET;

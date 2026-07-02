@@ -3,6 +3,12 @@ import { sql } from "@/lib/db";
 import { PROTOCOLS, getProtocol } from "@/lib/protocols";
 import { estimateWalletValue } from "@/lib/valueEstimator";
 
+// Without this, Next.js tries to statically pre-render this route at BUILD
+// time (before any real DB/env is guaranteed available), which breaks the
+// build the moment this route touches the database. Every route that reads
+// or writes the DB needs this.
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const wallets = await sql`select id, address, label from wallets order by created_at asc`;
 

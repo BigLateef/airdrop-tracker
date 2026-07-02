@@ -3,6 +3,8 @@ import { sql } from "@/lib/db";
 import { PROTOCOLS } from "@/lib/protocols";
 import { getWalletActivity } from "@/lib/chain";
 
+export const dynamic = "force-dynamic";
+
 const ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
 
 export async function POST(req: NextRequest) {
